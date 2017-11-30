@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KaW-M9-WDj">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detect Image View Controller-->
+        <scene sceneID="jsf-gS-S7A">
+            <objects>
+                <viewController id="KaW-M9-WDj" customClass="DetectImageViewController" customModule="FaceDetect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4wu-Ed-fLi"/>
+                        <viewControllerLayoutGuide type="bottom" id="hEK-hP-D10"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RLD-AD-uqO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BSG-iy-h1s">
+                                <rect key="frame" x="0.0" y="20" width="320" height="450"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="MyW-aD-VEO"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFJ-rO-Cn7">
+                                <rect key="frame" x="48" y="500" width="76" height="30"/>
+                                <state key="normal" title="Take photo"/>
+                                <connections>
+                                    <action selector="onTapTakePhotoWithSender:" destination="KaW-M9-WDj" eventType="touchUpInside" id="DUR-zl-aJL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9EE-XR-ea4">
+                                <rect key="frame" x="235" y="500" width="55" height="30"/>
+                                <state key="normal" title="Process"/>
+                                <connections>
+                                    <action selector="onTapProcessWithSender:" destination="KaW-M9-WDj" eventType="touchUpInside" id="En4-HQ-ae2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BSG-iy-h1s" secondAttribute="trailing" id="Axf-jV-V81"/>
+                            <constraint firstAttribute="trailing" secondItem="9EE-XR-ea4" secondAttribute="trailing" constant="30" id="KDP-56-wpN"/>
+                            <constraint firstItem="PFJ-rO-Cn7" firstAttribute="leading" secondItem="RLD-AD-uqO" secondAttribute="leading" constant="48" id="WuS-se-eSS"/>
+                            <constraint firstItem="BSG-iy-h1s" firstAttribute="top" secondItem="4wu-Ed-fLi" secondAttribute="bottom" id="buU-t5-YVC"/>
+                            <constraint firstItem="PFJ-rO-Cn7" firstAttribute="top" secondItem="BSG-iy-h1s" secondAttribute="bottom" constant="30" id="fjC-YE-VyT"/>
+                            <constraint firstItem="9EE-XR-ea4" firstAttribute="top" secondItem="BSG-iy-h1s" secondAttribute="bottom" constant="30" id="viJ-8t-76y"/>
+                            <constraint firstItem="BSG-iy-h1s" firstAttribute="leading" secondItem="RLD-AD-uqO" secondAttribute="leading" id="zpS-zR-git"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="BSG-iy-h1s" id="pVs-C0-kIN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tu5-Ze-beY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="159" y="113"/>
+        </scene>
+    </scenes>
+</document>
