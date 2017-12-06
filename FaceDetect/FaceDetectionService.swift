@@ -165,7 +165,10 @@ class FaceDetectionService: NSObject, AVCaptureVideoDataOutputSampleBufferDelega
         
         if (features.count != 0) {
             
-            let image = UIImage(ciImage: sourceImage)
+            // need to convert ciimage to cgimage for fixing bug
+            // UIImageJPEGRepresentation not work if image has no CGImageRef or invalid bitmap format
+            let cgimage = convertCIImageToCGImage(inputImage: sourceImage)
+            let image = UIImage(cgImage: cgimage!)
             
             if (onlyFireNotificatonOnStatusChange == true) {
                 if (self.faceDetected == false) {
@@ -311,6 +314,10 @@ class FaceDetectionService: NSObject, AVCaptureVideoDataOutputSampleBufferDelega
         }
     }
     
+    private func convertCIImageToCGImage(inputImage: CIImage) -> CGImage! {
+        let context = CIContext(options: nil)
+        return context.createCGImage(inputImage, from: inputImage.extent)
+    }
     //TODO: 🚧 HELPER TO CONVERT BETWEEN UIDEVICEORIENTATION AND CIDETECTORORIENTATION 🚧
     private func convertOrientation(deviceOrientation: UIDeviceOrientation) -> Int {
         var orientation: Int = 0
