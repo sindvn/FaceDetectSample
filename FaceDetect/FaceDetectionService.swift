@@ -155,11 +155,13 @@ class FaceDetectionService: NSObject, AVCaptureVideoDataOutputSampleBufferDelega
     //MARK: CAPTURE-OUTPUT/ANALYSIS OF FACIAL-FEATURES
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
         
+        connection.videoOrientation = .portrait
+        
         let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
         let opaqueBuffer = Unmanaged<CVImageBuffer>.passUnretained(imageBuffer!).toOpaque()
         let pixelBuffer = Unmanaged<CVPixelBuffer>.fromOpaque(opaqueBuffer).takeUnretainedValue()
         let sourceImage = CIImage(cvImageBuffer: pixelBuffer, options: nil)
-        options = [CIDetectorSmile : true as AnyObject, CIDetectorEyeBlink: true as AnyObject, CIDetectorImageOrientation : 6 as AnyObject]
+        options = [CIDetectorSmile : true as AnyObject, CIDetectorEyeBlink: true as AnyObject]
         
         let features = self.faceDetector!.features(in: sourceImage, options: options)
         
